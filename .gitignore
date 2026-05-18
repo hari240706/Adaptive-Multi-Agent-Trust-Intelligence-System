@@ -7,6 +7,7 @@ __pycache__/
 
 # Jupyter checkpoints
 .ipynb_checkpoints/
+*.ipynb_checkpoints
 
 # VS Code settings
 .vscode/
@@ -16,3 +17,13 @@ __pycache__/
 
 # Raw datasets
 data/raw/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Pytest cache
+.pytest_cache/
+
+# Cache
+.cache/
