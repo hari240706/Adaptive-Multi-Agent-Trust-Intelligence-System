@@ -1,20 +1,22 @@
 # AMATIS
 
-## Adaptive Multi-Agent Trust Intelligence System
+# Adaptive Multi-Agent Trust Intelligence System
 
-An AI-powered misinformation detection and trust analysis platform designed to detect, analyze, and explain fake information using NLP, multi-agent intelligence, and scalable system architecture.
+AMATIS is an AI-powered misinformation detection and trust intelligence platform designed to detect, analyze, explain, and track fake or misleading information using modern NLP, transformer architectures, multi-agent intelligence systems, and scalable AI infrastructure.
 
 ---
 
 # 🚀 Project Vision
 
-AMATIS aims to build a next-generation trust intelligence platform capable of:
+AMATIS aims to evolve into a next-generation trust intelligence ecosystem capable of:
 
-* Detecting fake or misleading information
-* Analyzing source credibility
-* Tracking misinformation propagation
-* Explaining AI decisions transparently
-* Scaling like real-world distributed AI systems
+- Detecting fake or misleading information
+- Understanding contextual semantics using transformers
+- Analyzing source credibility
+- Tracking misinformation propagation
+- Explaining AI decisions transparently
+- Supporting multi-agent trust reasoning
+- Scaling like real-world distributed AI systems
 
 This project is being engineered with a production-oriented and MAANG-level system design mindset.
 
@@ -22,18 +24,60 @@ This project is being engineered with a production-oriented and MAANG-level syst
 
 # 🎯 Current Development Status
 
-## ✅ Phase 1 — Data Engineering Pipeline (Completed)
+# ✅ Phase 1 — Data Engineering Pipeline (Completed)
 
-### Completed Tasks
+## Completed Tasks
 
-* Project environment setup
-* Repository structure creation
-* Multi-source dataset collection
-* Data cleaning and preprocessing
-* Schema standardization
-* Label normalization
-* Dataset merging and deduplication
-* Final unified dataset generation
+- Project environment setup
+- Repository structure creation
+- Multi-source dataset collection
+- Data cleaning and preprocessing
+- Schema standardization
+- Label normalization
+- Dataset merging and deduplication
+- Final unified dataset generation
+
+---
+
+# ✅ Phase 2 — Baseline NLP System (Completed)
+
+## Completed Tasks
+
+- TF-IDF vectorization
+- Logistic Regression classifier
+- Train/test pipeline
+- Model evaluation
+- Confusion matrix analysis
+- Model persistence using joblib
+- Real-time prediction pipeline
+
+---
+
+# ✅ Phase 3 — Full-Stack AI Integration (Completed)
+
+## Completed Tasks
+
+- FastAPI backend development
+- REST API creation
+- Frontend UI integration
+- Frontend ↔ Backend communication
+- Real-time inference pipeline
+- CORS middleware configuration
+- End-to-end AI workflow deployment locally
+
+---
+
+# ✅ Phase 4 — Transformer-Based NLP System (Completed)
+
+## Completed Tasks
+
+- DistilBERT fine-tuning
+- Transformer tokenization pipeline
+- Hugging Face integration
+- GPU-based training using Google Colab
+- Transformer evaluation pipeline
+- DistilBERT inference integration
+- Transformer-based FastAPI backend upgrade
 
 ---
 
@@ -43,10 +87,10 @@ This project is being engineered with a production-oriented and MAANG-level syst
 
 Used:
 
-* BuzzFeed fake news dataset
-* BuzzFeed real news dataset
-* PolitiFact fake news dataset
-* PolitiFact real news dataset
+- BuzzFeed fake news dataset
+- BuzzFeed real news dataset
+- PolitiFact fake news dataset
+- PolitiFact real news dataset
 
 ---
 
@@ -54,9 +98,9 @@ Used:
 
 Used:
 
-* train.tsv
-* test.tsv
-* valid.tsv
+- train.tsv
+- test.tsv
+- valid.tsv
 
 ---
 
@@ -64,53 +108,79 @@ Used:
 
 Used:
 
-* train.csv
-* test.csv
-* evaluation.csv
+- train.csv
+- test.csv
+- evaluation.csv
 
 ---
 
-# 🧠 Current Data Engineering Pipeline
+# 🧠 Current System Architecture
 
 ```text
-Raw Datasets
-      ↓
-Schema Discovery
-      ↓
-Column Standardization
-      ↓
-Label Mapping
-      ↓
-Data Cleaning
-      ↓
-Deduplication
-      ↓
-Dataset Merging
-      ↓
-Final Unified Dataset
+User Input
+    ↓
+Frontend Dashboard
+    ↓
+FastAPI Backend
+    ↓
+DistilBERT Tokenizer
+    ↓
+Transformer Inference Engine
+    ↓
+Semantic Classification
+    ↓
+Prediction + Confidence
 ```
 
 ---
 
 # 🧹 Data Cleaning Operations
 
-The preprocessing pipeline currently performs:
+The preprocessing pipeline performs:
 
-* Null value removal
-* Duplicate removal
-* URL cleaning
-* Lowercase normalization
-* Special character removal
-* Whitespace normalization
-* Label standardization
-* Dataset shuffling
+- Null value removal
+- Duplicate removal
+- URL cleaning
+- Lowercase normalization
+- Special character removal
+- Whitespace normalization
+- Label standardization
+- Dataset shuffling
 
 ---
 
-# 📁 Project Structure
+# 📊 Current Model Performance
+
+## Baseline Logistic Regression Model
+
+| Metric | Score |
+|--------|------|
+| Accuracy | 87.2% |
+| F1-Score | 87% |
+
+---
+
+## DistilBERT Transformer Model
+
+| Metric | Score |
+|--------|------|
+| Accuracy | 89.6% |
+| F1-Score | 89.7% |
+
+---
+
+# 📁 Current Project Structure
 
 ```text
 Adaptive-Multi-Agent-Trust-Intelligence-System/
+│
+├── backend/
+│   └── main.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
 │
 ├── data/
 │   ├── raw/
@@ -119,69 +189,109 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 │       ├── liar_cleaned.csv
 │       └── final_cleaned_dataset.csv
 │
-├── notebooks/
-│   └── 01_data_cleaning.ipynb
+├── models/
+│   ├── logistic_model.pkl
+│   └── tfidf_vectorizer.pkl
 │
-├── backend/
+├── notebooks/
+│   ├── 01_data_cleaning.ipynb
+│   ├── 02_baseline_model.ipynb
+│   └── 03_distilbert_training.ipynb
+│
 ├── scripts/
+│
 ├── .gitignore
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
-# ⚙️ Technologies Used (Current Phase)
+# ⚙️ Technologies Used
 
 ## Programming Language
 
-* Python
-
-## Libraries
-
-* pandas
-* numpy
-* re
-* scikit-learn
-* jupyter
-
-## Tools
-
-* Git
-* GitHub
-* Jupyter Notebook
-* VS Code
+- Python
 
 ---
 
-# 🛣️ Upcoming Development Phases
+## Machine Learning & NLP
 
-## 🔥 Phase 2 — Baseline NLP Model
-
-Planned:
-
-* Train/Test split
-* TF-IDF vectorization
-* Logistic Regression classifier
-* Evaluation metrics
-* Model persistence
+- scikit-learn
+- transformers
+- torch
+- Hugging Face
+- pandas
+- numpy
 
 ---
 
-## 🔥 Future Phases
+## Backend
 
-Planned system modules:
+- FastAPI
+- Uvicorn
+- Pydantic
 
-* Transformer-based misinformation detection
-* Multi-agent AI architecture
-* Orchestrator decision engine
-* Explainable AI (XAI)
-* Source credibility analysis
-* Bot detection
-* Graph-based misinformation tracking
-* Real-time streaming pipeline
-* Cloud-native deployment
-* Kubernetes orchestration
-* Adaptive meta-agent learning
+---
+
+## Frontend
+
+- HTML
+- CSS
+- JavaScript
+
+---
+
+## Development Tools
+
+- Git
+- GitHub
+- Jupyter Notebook
+- Google Colab
+- VS Code
+
+---
+
+# 🧠 Current AI Capabilities
+
+AMATIS currently supports:
+
+- Transformer-based misinformation detection
+- Semantic text understanding
+- Confidence scoring
+- Real-time API inference
+- Frontend AI interaction
+- NLP-based classification workflows
+
+---
+
+# 🔥 Upcoming Development Phases
+
+## Phase 5 — Multi-Agent Intelligence Architecture
+
+Planned Agents:
+
+- NLP Analysis Agent
+- Fact Verification Agent
+- Source Credibility Agent
+- Knowledge Graph Agent
+- Propagation Analysis Agent
+- Decision Orchestrator Agent
+
+---
+
+## Future Planned Features
+
+- Explainable AI (XAI)
+- Source credibility analysis
+- Bot detection
+- Graph-based misinformation tracking
+- Real-time streaming pipeline
+- Cloud-native deployment
+- Docker containerization
+- Kubernetes orchestration
+- Adaptive meta-agent learning
+- Distributed AI infrastructure
 
 ---
 
@@ -189,33 +299,53 @@ Planned system modules:
 
 The final system aims to evolve into a:
 
-* Real-time misinformation intelligence platform
-* Distributed AI ecosystem
-* Multi-agent adaptive trust analysis system
-* Scalable cloud-native AI infrastructure
+- Real-time misinformation intelligence platform
+- Distributed AI ecosystem
+- Multi-agent adaptive trust analysis system
+- Scalable cloud-native AI infrastructure
+- Intelligent trust reasoning engine
 
 ---
 
 # 🎯 Core Objectives
 
-* Build an explainable misinformation detection system
-* Create a scalable AI architecture
-* Combine NLP, graph intelligence, and behavioral analysis
-* Engineer a production-grade AI pipeline
-* Develop a MAANG-level system engineering portfolio project
+- Build an explainable misinformation detection system
+- Create a scalable AI architecture
+- Combine NLP, graph intelligence, and behavioral analysis
+- Engineer a production-grade AI pipeline
+- Develop a MAANG-level system engineering portfolio project
+- Research advanced trust intelligence architectures
 
 ---
 
 # 📌 Current Milestone
 
-✅ Multi-source data engineering pipeline completed.
+✅ Transformer-based misinformation detection system completed.
 
-Next milestone:
+## Current Capabilities
 
-🚀 Baseline misinformation detection model training.
+- End-to-end full-stack AI workflow
+- Transformer inference API
+- DistilBERT semantic reasoning pipeline
+- Real-time frontend prediction system
+
+---
+
+# 🚀 Next Milestone
+
+- Multi-agent trust intelligence architecture
+- Fact verification pipeline
+- Knowledge graph integration
+- Orchestrator-based AI reasoning system
 
 ---
 
 # 📄 License
 
 This project is currently under active development.
+
+---
+
+# 👨‍💻 Author
+
+HARIPRASAD R
