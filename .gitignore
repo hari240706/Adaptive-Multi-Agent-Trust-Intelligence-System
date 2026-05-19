@@ -18,6 +18,14 @@ __pycache__/
 # Raw datasets
 data/raw/
 
+# Training outputs
+results/
+logs/
+
+# Hugging Face cache
+.huggingface/
+transformers_cache/
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -27,3 +35,5 @@ Thumbs.db
 
 # Cache
 .cache/
+
+models/distilbert_model/
