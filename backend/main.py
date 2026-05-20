@@ -2,12 +2,16 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
-import torch
+import sys
+import os
 
-from transformers import (
-    AutoTokenizer,
-    AutoModelForSequenceClassification
+# Add agents folder to path
+sys.path.append(
+    os.path.abspath("../agents")
 )
+
+# Import orchestrator
+from orchestrator import run_agents
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -25,20 +29,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load DistilBERT model and tokenizer
-MODEL_PATH = "../models/distilbert_model"
-
-tokenizer = AutoTokenizer.from_pretrained(
-    MODEL_PATH
-)
-
-model = AutoModelForSequenceClassification.from_pretrained(
-    MODEL_PATH
-)
-
-# Set model to evaluation mode
-model.eval()
-
 
 # Request schema
 class NewsRequest(BaseModel):
@@ -50,7 +40,7 @@ class NewsRequest(BaseModel):
 def home():
 
     return {
-        "message": "AMATIS Transformer API Running Successfully"
+        "message": "AMATIS Multi-Agent API Running Successfully"
     }
 
 
@@ -58,52 +48,10 @@ def home():
 @app.post("/predict")
 def predict_news(request: NewsRequest):
 
-    # Tokenize input text
-    inputs = tokenizer(
-        request.text,
-
-        return_tensors="pt",
-
-        truncation=True,
-
-        padding=True,
-
-        max_length=256
+    # Run all agents
+    result = run_agents(
+        request.text
     )
 
-    # Disable gradient calculation
-    with torch.no_grad():
-
-        outputs = model(**inputs)
-
-    # Get logits
-    logits = outputs.logits
-
-    # Convert logits to probabilities
-    probabilities = torch.softmax(
-        logits,
-        dim=1
-    )
-
-    # Get predicted class
-    prediction = torch.argmax(
-        probabilities,
-        dim=1
-    ).item()
-
-    # Get confidence score
-    confidence = torch.max(
-        probabilities
-    ).item()
-
-    # Label mapping
-    if prediction == 1:
-        label = "Real News"
-    else:
-        label = "Fake News"
-
-    # Return response
-    return {
-        "prediction": label,
-        "confidence": round(confidence, 2)
-    }
+    # Return multi-agent result
+    return result

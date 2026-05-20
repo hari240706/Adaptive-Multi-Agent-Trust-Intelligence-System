@@ -13,9 +13,10 @@ AMATIS aims to evolve into a next-generation trust intelligence ecosystem capabl
 - Detecting fake or misleading information
 - Understanding contextual semantics using transformers
 - Analyzing source credibility
+- Verifying suspicious claims
 - Tracking misinformation propagation
 - Explaining AI decisions transparently
-- Supporting multi-agent trust reasoning
+- Supporting cooperative multi-agent reasoning
 - Scaling like real-world distributed AI systems
 
 This project is being engineered with a production-oriented and MAANG-level system design mindset.
@@ -81,6 +82,22 @@ This project is being engineered with a production-oriented and MAANG-level syst
 
 ---
 
+# ✅ Phase 5 — Multi-Agent Intelligence Architecture (In Progress)
+
+## Completed Tasks
+
+- Modular agent architecture
+- NLP Agent implementation
+- Credibility Agent implementation
+- Fact Check Agent implementation
+- Multi-agent orchestrator
+- Agent-based trust scoring
+- Cooperative AI reasoning workflow
+- Multi-agent frontend visualization
+- AI trust dashboard integration
+
+---
+
 # 📂 Datasets Used
 
 ## 1. FakeNewsNet
@@ -114,22 +131,27 @@ Used:
 
 ---
 
-# 🧠 Current System Architecture
+# 🧠 Current Multi-Agent Architecture
 
 ```text
 User Input
     ↓
-Frontend Dashboard
+Frontend Trust Dashboard
     ↓
 FastAPI Backend
     ↓
-DistilBERT Tokenizer
+Orchestrator Agent
     ↓
-Transformer Inference Engine
-    ↓
-Semantic Classification
-    ↓
-Prediction + Confidence
+ ┌─────────────────────┬─────────────────────┬─────────────────────┐
+ │                     │                     │
+ ↓                     ↓                     ↓
+NLP Agent      Credibility Agent     Fact Check Agent
+ │                     │                     │
+ └─────────────────────┴─────────────────────┘
+                ↓
+        Trust Intelligence
+                ↓
+      Final Prediction + Trust Score
 ```
 
 ---
@@ -169,10 +191,34 @@ The preprocessing pipeline performs:
 
 ---
 
+# 🧠 Current AI Capabilities
+
+AMATIS currently supports:
+
+- Transformer-based misinformation detection
+- Semantic text understanding
+- Multi-agent trust reasoning
+- Source credibility analysis
+- Rule-based fact verification
+- Cooperative agent orchestration
+- Confidence scoring
+- Trust score generation
+- Real-time API inference
+- Frontend AI interaction
+- Explainable multi-agent outputs
+
+---
+
 # 📁 Current Project Structure
 
 ```text
 Adaptive-Multi-Agent-Trust-Intelligence-System/
+│
+├── agents/
+│   ├── nlp_agent.py
+│   ├── credibility_agent.py
+│   ├── fact_check_agent.py
+│   └── orchestrator.py
 │
 ├── backend/
 │   └── main.py
@@ -200,9 +246,10 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 │
 ├── scripts/
 │
+├── requirements.txt
 ├── .gitignore
 ├── README.md
-└── requirements.txt
+└── venv/
 ```
 
 ---
@@ -252,46 +299,72 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 
 ---
 
-# 🧠 Current AI Capabilities
+# 🔥 Current Multi-Agent Components
 
-AMATIS currently supports:
+## NLP Agent
 
-- Transformer-based misinformation detection
-- Semantic text understanding
-- Confidence scoring
-- Real-time API inference
-- Frontend AI interaction
-- NLP-based classification workflows
+Responsibilities:
+
+- Semantic misinformation classification
+- Transformer inference
+- Confidence estimation
 
 ---
 
-# 🔥 Upcoming Development Phases
+## Credibility Agent
 
-## Phase 5 — Multi-Agent Intelligence Architecture
+Responsibilities:
 
-Planned Agents:
+- Source trust analysis
+- Trusted-domain identification
+- Credibility scoring
 
-- NLP Analysis Agent
-- Fact Verification Agent
-- Source Credibility Agent
+---
+
+## Fact Check Agent
+
+Responsibilities:
+
+- Suspicious pattern detection
+- Rule-based verification
+- Claim anomaly analysis
+
+---
+
+## Orchestrator Agent
+
+Responsibilities:
+
+- Agent coordination
+- Multi-agent reasoning
+- Trust score generation
+- Final decision synthesis
+
+---
+
+# 🚀 Upcoming Development Phases
+
+## Future Planned Agents
+
 - Knowledge Graph Agent
 - Propagation Analysis Agent
-- Decision Orchestrator Agent
+- Web Verification Agent
+- Memory Agent
+- Adaptive Meta-Agent
 
 ---
 
 ## Future Planned Features
 
 - Explainable AI (XAI)
-- Source credibility analysis
-- Bot detection
+- Live web evidence retrieval
 - Graph-based misinformation tracking
 - Real-time streaming pipeline
 - Cloud-native deployment
 - Docker containerization
 - Kubernetes orchestration
-- Adaptive meta-agent learning
 - Distributed AI infrastructure
+- Adaptive multi-agent learning
 
 ---
 
@@ -320,23 +393,27 @@ The final system aims to evolve into a:
 
 # 📌 Current Milestone
 
-✅ Transformer-based misinformation detection system completed.
+✅ Multi-Agent Trust Intelligence Architecture successfully integrated.
 
 ## Current Capabilities
 
 - End-to-end full-stack AI workflow
 - Transformer inference API
-- DistilBERT semantic reasoning pipeline
-- Real-time frontend prediction system
+- Multi-agent orchestration
+- AI trust dashboard
+- Trust score generation
+- Cooperative AI reasoning pipeline
+- Explainable agent outputs
 
 ---
 
 # 🚀 Next Milestone
 
-- Multi-agent trust intelligence architecture
-- Fact verification pipeline
 - Knowledge graph integration
-- Orchestrator-based AI reasoning system
+- Live web verification agents
+- Advanced reasoning systems
+- Evidence retrieval pipeline
+- Adaptive orchestrator intelligence
 
 ---
 

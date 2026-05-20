@@ -1,49 +1,65 @@
 async function analyzeNews() {
 
     const text = document.getElementById(
-        "newsText"
+        "newsInput"
     ).value;
 
-    const resultDiv = document.getElementById(
-        "result"
+    const response = await fetch(
+        "http://127.0.0.1:8000/predict",
+
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                text: text
+            })
+        }
     );
 
-    if (!text) {
+    const data = await response.json();
 
-        resultDiv.innerHTML =
-            "Please enter some text.";
+    let agentHTML = "";
 
-        return;
-    }
+    data.agents.forEach(agent => {
 
-    try {
+        agentHTML += `
 
-        const response = await fetch(
-            "http://127.0.0.1:8000/predict",
-            {
-                method: "POST",
+            <div class="agent-card">
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                <h3>${agent.agent}</h3>
 
-                body: JSON.stringify({
-                    text: text
-                })
-            }
-        );
+                <pre>
+${JSON.stringify(agent, null, 2)}
+                </pre>
 
-        const data = await response.json();
-
-        resultDiv.innerHTML = `
-            Prediction: ${data.prediction}
-            <br>
-            Confidence: ${data.confidence}
+            </div>
         `;
+    });
 
-    } catch (error) {
+    document.getElementById(
+        "result"
+    ).innerHTML = `
 
-        resultDiv.innerHTML =
-            "Error connecting to API.";
-    }
+        <div class="result-card">
+
+            <h2>
+                Final Prediction:
+                ${data.final_prediction}
+            </h2>
+
+            <h3>
+                Trust Score:
+                ${data.trust_score}
+            </h3>
+
+            <hr>
+
+            ${agentHTML}
+
+        </div>
+    `;
 }
