@@ -1,39 +1,101 @@
+# =========================
 # Virtual Environment
-venv/
+# =========================
 
-# Python cache
+venv/
+env/
+ENV/
+
+# =========================
+# Python Cache
+# =========================
+
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
-# Jupyter checkpoints
+# =========================
+# Jupyter
+# =========================
+
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# VS Code settings
+# =========================
+# VS Code
+# =========================
+
 .vscode/
 
-# Environment variables
+# =========================
+# Environment Variables
+# =========================
+
 .env
 
-# Raw datasets
+# =========================
+# Raw Datasets
+# =========================
+
 data/raw/
 
-# Training outputs
+# =========================
+# Training Outputs
+# =========================
+
 results/
 logs/
 
-# Hugging Face cache
+# =========================
+# Hugging Face Cache
+# =========================
+
 .huggingface/
 transformers_cache/
 
-# OS files
+# =========================
+# Model Files
+# =========================
+
+backend/models/distilbert_model/
+
+# =========================
+# Docker
+# =========================
+
+docker-compose.override.yml
+
+# =========================
+# OS Files
+# =========================
+
 .DS_Store
 Thumbs.db
 
-# Pytest cache
+# =========================
+# Pytest
+# =========================
+
 .pytest_cache/
 
-# Cache
+# =========================
+# General Cache
+# =========================
+
 .cache/
 
-models/distilbert_model/
+# =========================
+# Build / Distribution
+# =========================
+
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Runtime Files
+# =========================
+
+*.log
+*.sqlite3

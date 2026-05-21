@@ -1,17 +1,11 @@
 from fastapi import FastAPI
+
 from pydantic import BaseModel
+
 from fastapi.middleware.cors import CORSMiddleware
 
-import sys
-import os
-
-# Add agents folder to path
-sys.path.append(
-    os.path.abspath("../agents")
-)
-
 # Import orchestrator
-from orchestrator import run_agents
+from agents.orchestrator import run_agents
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -32,6 +26,7 @@ app.add_middleware(
 
 # Request schema
 class NewsRequest(BaseModel):
+
     text: str
 
 
@@ -40,7 +35,9 @@ class NewsRequest(BaseModel):
 def home():
 
     return {
-        "message": "AMATIS Multi-Agent API Running Successfully"
+
+        "message":
+        "AMATIS Multi-Agent API Running Successfully"
     }
 
 
@@ -53,5 +50,5 @@ def predict_news(request: NewsRequest):
         request.text
     )
 
-    # Return multi-agent result
+    # Return orchestrated result
     return result

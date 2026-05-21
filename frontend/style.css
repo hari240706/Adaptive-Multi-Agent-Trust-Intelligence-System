@@ -1,62 +1,108 @@
-body {
-
-    font-family: Arial, sans-serif;
-
-    background: #f4f4f4;
+* {
 
     margin: 0;
 
     padding: 0;
+
+    box-sizing: border-box;
 }
 
-.container {
+body {
 
-    width: 70%;
+    font-family: 'Poppins', sans-serif;
 
-    margin: 40px auto;
+    background: #0f172a;
 
-    background: white;
+    color: white;
+
+    min-height: 100vh;
+
+    padding: 40px;
+}
+
+.main-container {
+
+    width: 90%;
+
+    max-width: 1400px;
+
+    margin: auto;
+}
+
+/* =========================
+   Header
+========================= */
+
+.header {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.header h1 {
+
+    font-size: 56px;
+
+    font-weight: 700;
+
+    color: #38bdf8;
+
+    margin-bottom: 10px;
+}
+
+.header p {
+
+    font-size: 20px;
+
+    color: #cbd5e1;
+}
+
+/* =========================
+   Input Section
+========================= */
+
+.input-section {
+
+    background: #1e293b;
 
     padding: 30px;
 
-    border-radius: 10px;
+    border-radius: 20px;
 
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+    margin-bottom: 30px;
 
-h1 {
-
-    text-align: center;
-
-    color: #222;
-}
-
-h2 {
-
-    text-align: center;
-
-    color: #666;
-
-    font-size: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
 textarea {
 
     width: 100%;
 
-    height: 180px;
+    height: 220px;
 
-    margin-top: 20px;
+    background: #0f172a;
 
-    padding: 15px;
+    border: 2px solid #334155;
+
+    color: white;
+
+    border-radius: 15px;
+
+    padding: 20px;
 
     font-size: 16px;
 
-    border-radius: 8px;
-
-    border: 1px solid #ccc;
-
     resize: none;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+textarea:focus {
+
+    border-color: #38bdf8;
 }
 
 button {
@@ -65,49 +111,293 @@ button {
 
     margin-top: 20px;
 
-    padding: 15px;
-
-    font-size: 18px;
-
-    background: #222;
-
-    color: white;
+    padding: 18px;
 
     border: none;
 
-    border-radius: 8px;
+    border-radius: 15px;
+
+    background: #38bdf8;
+
+    color: #0f172a;
+
+    font-size: 18px;
+
+    font-weight: 600;
 
     cursor: pointer;
+
+    transition: 0.3s;
 }
 
 button:hover {
 
-    background: #444;
+    background: #0ea5e9;
+
+    transform: scale(1.01);
 }
 
-#result {
+/* =========================
+   Result Section
+========================= */
 
-    margin-top: 30px;
+.result-section {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
 }
 
-.result-card {
+/* =========================
+   Prediction Card
+========================= */
 
-    background: #fafafa;
+.prediction-card {
 
-    padding: 20px;
+    background: #1e293b;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.prediction-card h2 {
+
+    margin-bottom: 20px;
+
+    color: #38bdf8;
+}
+
+.prediction-text {
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+}
+
+.trust-score {
+
+    font-size: 22px;
+
+    color: #cbd5e1;
+}
+
+/* =========================
+   Weights Card
+========================= */
+
+.weights-card {
+
+    background: #1e293b;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.weights-card h2 {
+
+    margin-bottom: 20px;
+
+    color: #38bdf8;
+}
+
+/* =========================
+   Weight Bars
+========================= */
+
+.weight-item {
+
+    margin-bottom: 20px;
+}
+
+.weight-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+}
+
+.weight-bar {
+
+    width: 100%;
+
+    height: 14px;
+
+    background: #334155;
 
     border-radius: 10px;
 
-    border: 1px solid #ddd;
+    overflow: hidden;
 }
+
+.weight-fill {
+
+    height: 100%;
+
+    background: #38bdf8;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   Graph Card
+========================= */
+
+.graph-card {
+
+    background: #1e293b;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.graph-card h2 {
+
+    color: #38bdf8;
+
+    margin-bottom: 20px;
+}
+
+#trustGraph {
+
+    width: 100%;
+
+    height: 500px;
+
+    background: #0f172a;
+
+    border-radius: 15px;
+
+    border: 1px solid #334155;
+}
+
+/* =========================
+   Agents Card
+========================= */
+
+.agents-card {
+
+    background: #1e293b;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.agents-card h2 {
+
+    margin-bottom: 25px;
+
+    color: #38bdf8;
+}
+
+/* =========================
+   Agent Card
+========================= */
 
 .agent-card {
 
-    margin-top: 15px;
+    background: #0f172a;
+
+    border: 1px solid #334155;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    transition: 0.3s;
+}
+
+.agent-card:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #38bdf8;
+}
+
+.agent-card h3 {
+
+    color: #38bdf8;
+
+    margin-bottom: 15px;
+
+    font-size: 20px;
+}
+
+.agent-output {
+
+    background: #020617;
 
     padding: 15px;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
-    background: #f0f0f0;
+    overflow-x: auto;
+
+    font-size: 14px;
+
+    color: #cbd5e1;
+
+    line-height: 1.6;
+}
+
+/* =========================
+   Scrollbar
+========================= */
+
+::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: #38bdf8;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+
+    .main-container {
+
+        width: 100%;
+    }
+
+    .header h1 {
+
+        font-size: 40px;
+    }
+
+    .prediction-text {
+
+        font-size: 28px;
+    }
 }

@@ -5,7 +5,7 @@ from transformers import (
     AutoModelForSequenceClassification
 )
 
-MODEL_PATH = "../models/distilbert_model"
+MODEL_PATH = "models/distilbert_model"
 
 tokenizer = AutoTokenizer.from_pretrained(
     MODEL_PATH

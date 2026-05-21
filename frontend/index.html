@@ -6,40 +6,146 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>AMATIS</title>
+    <title>
+        AMATIS
+    </title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
 
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="main-container">
 
-        <h1>
-            AMATIS
-        </h1>
+        <!-- Header -->
 
-        <h2>
-            Adaptive Multi-Agent Trust Intelligence System
-        </h2>
+        <div class="header">
 
-        <textarea
-            id="newsInput"
+            <h1>
+                AMATIS
+            </h1>
 
-            placeholder="Paste news content here..."
-        ></textarea>
+            <p>
+                Adaptive Multi-Agent Trust Intelligence System
+            </p>
 
-        <button onclick="analyzeNews()">
+        </div>
 
-            Analyze
+        <!-- Input Section -->
 
-        </button>
+        <div class="input-section">
 
-        <div id="result">
+            <textarea
+
+                id="newsInput"
+
+                placeholder="Paste news article, claim, or suspicious content here..."
+
+            ></textarea>
+
+            <button onclick="analyzeNews()">
+
+                Analyze Trust Intelligence
+
+            </button>
+
+        </div>
+
+        <!-- Result Section -->
+
+        <div id="resultSection"
+             class="result-section">
+
+            <!-- Prediction -->
+
+            <div class="prediction-card">
+
+                <h2>
+                    Final Prediction
+                </h2>
+
+                <div id="finalPrediction"
+                     class="prediction-text">
+
+                    Waiting for analysis...
+
+                </div>
+
+                <div id="trustScore"
+                     class="trust-score">
+
+                    Trust Score: --
+
+                </div>
+
+            </div>
+
+            <!-- Weights -->
+
+            <div class="weights-card">
+
+                <h2>
+                    Agent Weights
+                </h2>
+
+                <div id="agentWeights">
+
+                </div>
+
+            </div>
+
+            <!-- Graph -->
+
+            <div class="graph-card">
+
+                <h2>
+                    Trust Intelligence Graph
+                </h2>
+
+                <div id="trustGraph"></div>
+
+            </div>
+
+            <!-- Agent Outputs -->
+
+            <div class="agents-card">
+
+                <h2>
+                    Multi-Agent Outputs
+                </h2>
+
+                <div id="agentsContainer">
+
+                </div>
+
+            </div>
 
         </div>
 
