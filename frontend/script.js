@@ -1,3 +1,111 @@
+let trustChartInstance = null;
+
+let websocket = null;
+
+
+// =========================
+// Initialize WebSocket
+// =========================
+
+function initializeWebSocket() {
+
+    websocket = new WebSocket(
+        "ws://127.0.0.1:8000/ws"
+    );
+
+    websocket.onopen = () => {
+
+        console.log(
+            "AMATIS Live Stream Connected"
+        );
+
+        websocket.send(
+            "Frontend Connected"
+        );
+    };
+
+    websocket.onmessage = (event) => {
+
+        const data = JSON.parse(
+            event.data
+        );
+
+        console.log(
+            "Live Update:",
+            data
+        );
+
+        // =========================
+        // Live Telemetry Notification
+        // =========================
+
+        if (
+            data.type === "live_analysis"
+        ) {
+
+            showLiveNotification(
+
+                `New Analysis → ${data.final_prediction}
+                 | Trust Score: ${data.trust_score}`
+            );
+        }
+    };
+
+    websocket.onerror = (error) => {
+
+        console.error(
+            "WebSocket Error:",
+            error
+        );
+    };
+
+    websocket.onclose = () => {
+
+        console.warn(
+            "WebSocket Disconnected"
+        );
+
+        // Reconnect automatically
+        setTimeout(() => {
+
+            initializeWebSocket();
+
+        }, 3000);
+    };
+}
+
+
+// =========================
+// Live Notification
+// =========================
+
+function showLiveNotification(message) {
+
+    const notification = document.createElement(
+        "div"
+    );
+
+    notification.className =
+        "live-notification";
+
+    notification.innerHTML = message;
+
+    document.body.appendChild(
+        notification
+    );
+
+    setTimeout(() => {
+
+        notification.remove();
+
+    }, 4000);
+}
+
+
+// =========================
+// Analyze News
+// =========================
+
 async function analyzeNews() {
 
     const text = document.getElementById(
@@ -51,22 +159,35 @@ async function analyzeNews() {
                 method: "POST",
 
                 headers: {
+
                     "Content-Type":
-                        "application/json"
+                    "application/json"
                 },
 
                 body: JSON.stringify({
+
                     text: text
                 })
             }
         );
+
+        // =========================
+        // Error Handling
+        // =========================
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Backend request failed"
+            );
+        }
 
         const data = await response.json();
 
         console.log(data);
 
         // =========================
-        // Prediction
+        // Final Prediction
         // =========================
 
         document.getElementById(
@@ -75,6 +196,27 @@ async function analyzeNews() {
 
             data.final_prediction ||
             "Unknown";
+
+        // Prediction color
+        if (
+            data.final_prediction ===
+            "Likely Real"
+        ) {
+
+            document.getElementById(
+                "finalPrediction"
+            ).style.color = "#22c55e";
+
+        } else {
+
+            document.getElementById(
+                "finalPrediction"
+            ).style.color = "#ef4444";
+        }
+
+        // =========================
+        // Trust Score
+        // =========================
 
         document.getElementById(
             "trustScore"
@@ -181,12 +323,16 @@ ${JSON.stringify(agent, null, 2)}
 
                 agent =>
 
-                agent.agent === "Trust Graph Agent"
+                agent.agent ===
+                "Trust Graph Agent"
             );
 
             if (
+
                 trustGraphAgent &&
+
                 trustGraphAgent.nodes &&
+
                 trustGraphAgent.edges
             ) {
 
@@ -261,7 +407,19 @@ ${JSON.stringify(agent, null, 2)}
                                     "wrap",
 
                                 "text-max-width":
-                                    "80px"
+                                    "90px",
+
+                                "width":
+                                    "75px",
+
+                                "height":
+                                    "75px",
+
+                                "border-width":
+                                    2,
+
+                                "border-color":
+                                    "#0ea5e9"
                             }
                         },
 
@@ -296,6 +454,14 @@ ${JSON.stringify(agent, null, 2)}
             }
         }
 
+        // =========================
+        // Refresh Analytics
+        // =========================
+
+        loadAnalytics();
+
+        loadHistory();
+
     } catch (error) {
 
         console.error(error);
@@ -313,3 +479,184 @@ ${JSON.stringify(agent, null, 2)}
             "Backend connection failed";
     }
 }
+
+
+// =========================
+// Load Analytics
+// =========================
+
+async function loadAnalytics() {
+
+    try {
+
+        const response = await fetch(
+
+            "http://127.0.0.1:8000/analytics"
+        );
+
+        const data = await response.json();
+
+        document.getElementById(
+            "analytics"
+        ).innerHTML = `
+
+            <div class="analytics-card">
+
+                <h3>
+                    Total Analyses:
+                    ${data.database_stats.total_analyses}
+                </h3>
+
+                <h3>
+                    Stored Claims:
+                    ${data.vector_memory_stats.stored_claims}
+                </h3>
+
+                <h3>
+                    Vector Dimension:
+                    ${data.vector_memory_stats.vector_dimension}
+                </h3>
+
+            </div>
+        `;
+
+    } catch (error) {
+
+        console.error(error);
+    }
+}
+
+
+// =========================
+// Load History
+// =========================
+
+async function loadHistory() {
+
+    try {
+
+        const response = await fetch(
+
+            "http://127.0.0.1:8000/history"
+        );
+
+        const data = await response.json();
+
+        let historyHTML = "";
+
+        let trustScores = [];
+
+        let labels = [];
+
+        data.recent_analyses.forEach((item, index) => {
+
+            historyHTML += `
+
+                <div class="history-card">
+
+                    <h3>
+                        ${item.prediction}
+                    </h3>
+
+                    <p>
+                        Trust Score:
+                        ${item.trust_score}
+                    </p>
+
+                    <p>
+                        ${item.timestamp}
+                    </p>
+
+                </div>
+            `;
+
+            trustScores.push(
+                item.trust_score
+            );
+
+            labels.push(
+                `Analysis ${index + 1}`
+            );
+        });
+
+        document.getElementById(
+            "history"
+        ).innerHTML = historyHTML;
+
+        // Destroy previous chart
+        if (trustChartInstance) {
+
+            trustChartInstance.destroy();
+        }
+
+        const ctx = document.getElementById(
+            "trustChart"
+        );
+
+        trustChartInstance = new Chart(ctx, {
+
+            type: "line",
+
+            data: {
+
+                labels: labels,
+
+                datasets: [
+
+                    {
+
+                        label:
+                        "Trust Scores",
+
+                        data:
+                        trustScores,
+
+                        borderWidth: 3,
+
+                        tension: 0.4,
+
+                        fill: true
+                    }
+                ]
+            },
+
+            options: {
+
+                responsive: true,
+
+                plugins: {
+
+                    legend: {
+
+                        display: true
+                    }
+                },
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        max: 1
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+
+        console.error(error);
+    }
+}
+
+
+// =========================
+// Initialize Dashboard
+// =========================
+
+initializeWebSocket();
+
+loadAnalytics();
+
+loadHistory();

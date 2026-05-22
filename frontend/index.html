@@ -15,11 +15,13 @@
         AMATIS
     </title>
 
+    <!-- Main CSS -->
     <link
         rel="stylesheet"
         href="style.css"
     >
 
+    <!-- Google Fonts -->
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -36,7 +38,11 @@
         rel="stylesheet"
     >
 
+    <!-- Cytoscape -->
     <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -44,7 +50,9 @@
 
     <div class="main-container">
 
+        <!-- ========================= -->
         <!-- Header -->
+        <!-- ========================= -->
 
         <div class="header">
 
@@ -58,7 +66,9 @@
 
         </div>
 
+        <!-- ========================= -->
         <!-- Input Section -->
+        <!-- ========================= -->
 
         <div class="input-section">
 
@@ -66,7 +76,7 @@
 
                 id="newsInput"
 
-                placeholder="Paste news article, claim, or suspicious content here..."
+                placeholder="Paste news article, suspicious claim, misinformation content, or trust intelligence query here..."
 
             ></textarea>
 
@@ -78,12 +88,16 @@
 
         </div>
 
+        <!-- ========================= -->
         <!-- Result Section -->
+        <!-- ========================= -->
 
         <div id="resultSection"
              class="result-section">
 
-            <!-- Prediction -->
+            <!-- ========================= -->
+            <!-- Prediction Card -->
+            <!-- ========================= -->
 
             <div class="prediction-card">
 
@@ -107,7 +121,9 @@
 
             </div>
 
-            <!-- Weights -->
+            <!-- ========================= -->
+            <!-- Agent Weights -->
+            <!-- ========================= -->
 
             <div class="weights-card">
 
@@ -121,7 +137,9 @@
 
             </div>
 
-            <!-- Graph -->
+            <!-- ========================= -->
+            <!-- Trust Graph -->
+            <!-- ========================= -->
 
             <div class="graph-card">
 
@@ -133,7 +151,9 @@
 
             </div>
 
+            <!-- ========================= -->
             <!-- Agent Outputs -->
+            <!-- ========================= -->
 
             <div class="agents-card">
 
@@ -149,8 +169,123 @@
 
         </div>
 
+        <!-- ========================= -->
+        <!-- Analytics Dashboard -->
+        <!-- ========================= -->
+
+        <div class="dashboard-section">
+
+            <h2>
+                System Analytics
+            </h2>
+
+            <div id="analytics">
+
+                <div class="analytics-card">
+
+                    Loading analytics...
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- Trust History Chart -->
+        <!-- ========================= -->
+
+        <div class="dashboard-section">
+
+            <h2>
+                Trust Score History
+            </h2>
+
+            <canvas id="trustChart"></canvas>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- Analysis History -->
+        <!-- ========================= -->
+
+        <div class="dashboard-section">
+
+            <h2>
+                Recent Analyses
+            </h2>
+
+            <div id="history">
+
+                <div class="history-card">
+
+                    Loading analysis history...
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- System Status -->
+        <!-- ========================= -->
+
+        <div class="dashboard-section">
+
+            <h2>
+                System Infrastructure
+            </h2>
+
+            <div class="analytics-card">
+
+                <h3>
+                    Active Components
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Multi-Agent Orchestrator
+                    </li>
+
+                    <li>
+                        DistilBERT NLP Engine
+                    </li>
+
+                    <li>
+                        FAISS Vector Database
+                    </li>
+
+                    <li>
+                        Retrieval-Augmented Generation
+                    </li>
+
+                    <li>
+                        Persistent Semantic Memory
+                    </li>
+
+                    <li>
+                        Adaptive Trust Intelligence
+                    </li>
+
+                    <li>
+                        Dockerized Infrastructure
+                    </li>
+
+                    <li>
+                        AI Observability APIs
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
     </div>
 
+    <!-- Main Script -->
     <script src="script.js"></script>
 
 </body>

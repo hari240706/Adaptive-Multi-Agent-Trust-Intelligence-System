@@ -11,20 +11,27 @@ body {
 
     font-family: 'Poppins', sans-serif;
 
-    background: #0f172a;
+    background: linear-gradient(
+        135deg,
+        #020617,
+        #0f172a,
+        #111827
+    );
 
     color: white;
 
     min-height: 100vh;
 
     padding: 40px;
+
+    overflow-x: hidden;
 }
 
 .main-container {
 
     width: 90%;
 
-    max-width: 1400px;
+    max-width: 1450px;
 
     margin: auto;
 }
@@ -37,25 +44,38 @@ body {
 
     text-align: center;
 
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .header h1 {
 
-    font-size: 56px;
+    font-size: 64px;
 
     font-weight: 700;
 
-    color: #38bdf8;
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #0ea5e9,
+        #22d3ee
+    );
 
-    margin-bottom: 10px;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    margin-bottom: 15px;
+
+    letter-spacing: 2px;
 }
 
 .header p {
 
-    font-size: 20px;
+    font-size: 22px;
 
     color: #cbd5e1;
+
+    opacity: 0.9;
 }
 
 /* =========================
@@ -64,32 +84,38 @@ body {
 
 .input-section {
 
-    background: #1e293b;
+    background: rgba(30, 41, 59, 0.8);
 
-    padding: 30px;
+    backdrop-filter: blur(12px);
 
-    border-radius: 20px;
+    padding: 35px;
 
-    margin-bottom: 30px;
+    border-radius: 24px;
 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    margin-bottom: 35px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.4),
+        0 0 40px rgba(56,189,248,0.05);
 }
 
 textarea {
 
     width: 100%;
 
-    height: 220px;
+    height: 240px;
 
-    background: #0f172a;
+    background: #020617;
 
     border: 2px solid #334155;
 
     color: white;
 
-    border-radius: 15px;
+    border-radius: 18px;
 
-    padding: 20px;
+    padding: 24px;
 
     font-size: 16px;
 
@@ -97,44 +123,56 @@ textarea {
 
     outline: none;
 
-    transition: 0.3s;
+    transition: all 0.3s ease;
+
+    line-height: 1.7;
 }
 
 textarea:focus {
 
     border-color: #38bdf8;
+
+    box-shadow:
+        0 0 20px rgba(56,189,248,0.3);
 }
 
 button {
 
     width: 100%;
 
-    margin-top: 20px;
+    margin-top: 25px;
 
     padding: 18px;
 
     border: none;
 
-    border-radius: 15px;
+    border-radius: 18px;
 
-    background: #38bdf8;
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #0ea5e9
+    );
 
-    color: #0f172a;
+    color: #020617;
 
     font-size: 18px;
 
-    font-weight: 600;
+    font-weight: 700;
 
     cursor: pointer;
 
-    transition: 0.3s;
+    transition: all 0.3s ease;
+
+    letter-spacing: 0.5px;
 }
 
 button:hover {
 
-    background: #0ea5e9;
+    transform: translateY(-2px);
 
-    transform: scale(1.01);
+    box-shadow:
+        0 10px 25px rgba(14,165,233,0.35);
 }
 
 /* =========================
@@ -147,67 +185,68 @@ button:hover {
 
     flex-direction: column;
 
-    gap: 25px;
+    gap: 28px;
+}
+
+/* =========================
+   Shared Cards
+========================= */
+
+.prediction-card,
+.weights-card,
+.graph-card,
+.agents-card,
+.dashboard-section {
+
+    background: rgba(30, 41, 59, 0.82);
+
+    backdrop-filter: blur(14px);
+
+    padding: 32px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.35);
+}
+
+.prediction-card h2,
+.weights-card h2,
+.graph-card h2,
+.agents-card h2,
+.dashboard-section h2 {
+
+    margin-bottom: 22px;
+
+    color: #38bdf8;
+
+    font-size: 28px;
+
+    font-weight: 600;
 }
 
 /* =========================
    Prediction Card
 ========================= */
 
-.prediction-card {
-
-    background: #1e293b;
-
-    padding: 30px;
-
-    border-radius: 20px;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.prediction-card h2 {
-
-    margin-bottom: 20px;
-
-    color: #38bdf8;
-}
-
 .prediction-text {
 
-    font-size: 34px;
+    font-size: 40px;
 
     font-weight: 700;
 
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .trust-score {
 
-    font-size: 22px;
+    font-size: 24px;
 
     color: #cbd5e1;
-}
 
-/* =========================
-   Weights Card
-========================= */
-
-.weights-card {
-
-    background: #1e293b;
-
-    padding: 30px;
-
-    border-radius: 20px;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.weights-card h2 {
-
-    margin-bottom: 20px;
-
-    color: #38bdf8;
+    font-weight: 500;
 }
 
 /* =========================
@@ -216,7 +255,7 @@ button:hover {
 
 .weight-item {
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .weight-header {
@@ -225,18 +264,20 @@ button:hover {
 
     justify-content: space-between;
 
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+
+    font-size: 15px;
 }
 
 .weight-bar {
 
     width: 100%;
 
-    height: 14px;
+    height: 16px;
 
     background: #334155;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     overflow: hidden;
 }
@@ -245,110 +286,79 @@ button:hover {
 
     height: 100%;
 
-    background: #38bdf8;
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #0ea5e9
+    );
 
-    border-radius: 10px;
+    border-radius: 12px;
+
+    transition: width 0.5s ease;
 }
 
 /* =========================
-   Graph Card
+   Trust Graph
 ========================= */
-
-.graph-card {
-
-    background: #1e293b;
-
-    padding: 30px;
-
-    border-radius: 20px;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.graph-card h2 {
-
-    color: #38bdf8;
-
-    margin-bottom: 20px;
-}
 
 #trustGraph {
 
     width: 100%;
 
-    height: 500px;
+    height: 550px;
 
-    background: #0f172a;
+    background: #020617;
 
-    border-radius: 15px;
+    border-radius: 18px;
 
     border: 1px solid #334155;
 }
 
 /* =========================
-   Agents Card
-========================= */
-
-.agents-card {
-
-    background: #1e293b;
-
-    padding: 30px;
-
-    border-radius: 20px;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.agents-card h2 {
-
-    margin-bottom: 25px;
-
-    color: #38bdf8;
-}
-
-/* =========================
-   Agent Card
+   Agent Cards
 ========================= */
 
 .agent-card {
 
-    background: #0f172a;
+    background: rgba(2, 6, 23, 0.95);
 
     border: 1px solid #334155;
 
-    border-radius: 15px;
+    border-radius: 18px;
 
-    padding: 20px;
+    padding: 24px;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .agent-card:hover {
 
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 
     border-color: #38bdf8;
+
+    box-shadow:
+        0 10px 25px rgba(56,189,248,0.12);
 }
 
 .agent-card h3 {
 
     color: #38bdf8;
 
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .agent-output {
 
     background: #020617;
 
-    padding: 15px;
+    padding: 18px;
 
-    border-radius: 10px;
+    border-radius: 14px;
 
     overflow-x: auto;
 
@@ -356,7 +366,85 @@ button:hover {
 
     color: #cbd5e1;
 
+    line-height: 1.7;
+
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+pre {
+
+    white-space: pre-wrap;
+
+    word-wrap: break-word;
+}
+
+/* =========================
+   Analytics Cards
+========================= */
+
+.analytics-card,
+.history-card {
+
+    background: rgba(2, 6, 23, 0.95);
+
+    padding: 24px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    margin-top: 18px;
+}
+
+.analytics-card h3,
+.history-card h3 {
+
+    margin-bottom: 12px;
+
+    color: #38bdf8;
+}
+
+.analytics-card p,
+.history-card p {
+
+    color: #cbd5e1;
+
+    margin-top: 8px;
+
     line-height: 1.6;
+}
+
+/* =========================
+   Infrastructure List
+========================= */
+
+.analytics-card ul {
+
+    margin-top: 15px;
+
+    padding-left: 20px;
+}
+
+.analytics-card li {
+
+    margin-bottom: 12px;
+
+    color: #cbd5e1;
+}
+
+/* =========================
+   Chart
+========================= */
+
+canvas {
+
+    margin-top: 20px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 20px;
 }
 
 /* =========================
@@ -370,12 +458,16 @@ button:hover {
 
 ::-webkit-scrollbar-track {
 
-    background: #0f172a;
+    background: #020617;
 }
 
 ::-webkit-scrollbar-thumb {
 
-    background: #38bdf8;
+    background: linear-gradient(
+        180deg,
+        #38bdf8,
+        #0ea5e9
+    );
 
     border-radius: 10px;
 }
@@ -384,7 +476,7 @@ button:hover {
    Responsive
 ========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 
     .main-container {
 
@@ -393,11 +485,63 @@ button:hover {
 
     .header h1 {
 
-        font-size: 40px;
+        font-size: 52px;
+    }
+
+    .prediction-text {
+
+        font-size: 34px;
+    }
+
+    #trustGraph {
+
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    body {
+
+        padding: 20px;
+    }
+
+    .header h1 {
+
+        font-size: 42px;
+    }
+
+    .header p {
+
+        font-size: 18px;
+    }
+
+    textarea {
+
+        height: 200px;
     }
 
     .prediction-text {
 
         font-size: 28px;
+    }
+
+    .trust-score {
+
+        font-size: 20px;
+    }
+
+    .prediction-card,
+    .weights-card,
+    .graph-card,
+    .agents-card,
+    .dashboard-section {
+
+        padding: 24px;
+    }
+
+    #trustGraph {
+
+        height: 380px;
     }
 }

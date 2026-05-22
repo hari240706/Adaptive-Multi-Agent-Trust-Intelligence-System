@@ -5,6 +5,7 @@
 venv/
 env/
 ENV/
+.venv/
 
 # =========================
 # Python Cache
@@ -33,12 +34,21 @@ __pycache__/
 # =========================
 
 .env
+.env.*
 
 # =========================
 # Raw Datasets
 # =========================
 
 data/raw/
+
+# =========================
+# Processed Temporary Files
+# =========================
+
+data/temp/
+temp/
+tmp/
 
 # =========================
 # Training Outputs
@@ -59,6 +69,21 @@ transformers_cache/
 # =========================
 
 backend/models/distilbert_model/
+models/distilbert_model/
+
+# =========================
+# Vector Database
+# =========================
+
+vector_store/
+backend/vector_store/
+
+# =========================
+# Database Files
+# =========================
+
+*.db
+*.sqlite3
 
 # =========================
 # Docker
@@ -66,12 +91,16 @@ backend/models/distilbert_model/
 
 docker-compose.override.yml
 
+# Docker cache / volumes
+docker-data/
+
 # =========================
 # OS Files
 # =========================
 
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # =========================
 # Pytest
@@ -98,11 +127,49 @@ dist/
 # =========================
 
 *.log
-*.sqlite3
 
-# Vector database
-vector_store/
-backend/vector_store/
+# =========================
+# Node Modules
+# =========================
 
-# Database
-*.db
+node_modules/
+
+# =========================
+# IDE Files
+# =========================
+
+.idea/
+
+# =========================
+# Streamlit Cache
+# =========================
+
+.streamlit/
+
+# =========================
+# Coverage Reports
+# =========================
+
+htmlcov/
+.coverage
+
+# =========================
+# Mac Metadata
+# =========================
+
+.AppleDouble
+.LSOverride
+
+# =========================
+# Windows Metadata
+# =========================
+
+ehthumbs.db
+
+# =========================
+# Backup Files
+# =========================
+
+*.bak
+*.tmp
+*.swp
