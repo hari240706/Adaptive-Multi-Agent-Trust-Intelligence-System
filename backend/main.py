@@ -7,6 +7,14 @@ from fastapi.middleware.cors import CORSMiddleware
 # Import orchestrator
 from agents.orchestrator import run_agents
 
+# Import analytics system
+from agents.analytics_agent import (
+
+    get_system_analytics,
+
+    get_analysis_history
+)
+
 # Initialize FastAPI app
 app = FastAPI()
 
@@ -24,13 +32,19 @@ app.add_middleware(
 )
 
 
-# Request schema
+# =========================
+# Request Schema
+# =========================
+
 class NewsRequest(BaseModel):
 
     text: str
 
 
-# Home route
+# =========================
+# Home Route
+# =========================
+
 @app.get("/")
 def home():
 
@@ -41,14 +55,37 @@ def home():
     }
 
 
-# Prediction route
+# =========================
+# Prediction Route
+# =========================
+
 @app.post("/predict")
 def predict_news(request: NewsRequest):
 
-    # Run all agents
+    # Run multi-agent orchestration
     result = run_agents(
         request.text
     )
 
-    # Return orchestrated result
+    # Return orchestrated response
     return result
+
+
+# =========================
+# Analytics Route
+# =========================
+
+@app.get("/analytics")
+def analytics():
+
+    return get_system_analytics()
+
+
+# =========================
+# History Route
+# =========================
+
+@app.get("/history")
+def history():
+
+    return get_analysis_history()

@@ -34,6 +34,8 @@ from agents.temporal_analysis_agent import analyze_temporal_consistency
 
 from agents.rag_agent import retrieve_rag_context
 
+from agents.database_agent import save_analysis
+
 
 def run_agents(text):
 
@@ -279,6 +281,19 @@ def run_agents(text):
     else:
 
         final_prediction = "Likely Fake"
+
+    # =========================
+    # Save Analysis to Database
+    # =========================
+
+    save_analysis(
+
+        text,
+
+        final_prediction,
+
+        round(final_score, 2)
+    )
 
     # =========================
     # Explanation Agent

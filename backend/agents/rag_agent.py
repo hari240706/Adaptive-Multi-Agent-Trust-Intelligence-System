@@ -1,55 +1,161 @@
-RAG_KNOWLEDGE_BASE = [
+from agents.vector_memory_agent import (
 
-    "NASA launched climate monitoring satellites.",
+    search_similar_claims
+)
 
-    "BBC published reports about climate agreements.",
+from sentence_transformers import (
 
-    "WHO released healthcare advisories."
-]
+    SentenceTransformer,
 
+    util
+)
+
+
+# =========================
+# Load Embedding Model
+# =========================
+
+embedding_model = SentenceTransformer(
+    "all-MiniLM-L6-v2"
+)
+
+
+# =========================
+# RAG Retrieval Agent
+# =========================
 
 def retrieve_rag_context(text):
 
-    text = text.lower()
+    # Retrieve similar contexts
+    retrieved_claims = search_similar_claims(
 
-    retrieved_context = []
+        text,
 
-    for knowledge in RAG_KNOWLEDGE_BASE:
+        top_k=5
+    )
 
-        if any(
-
-            word in knowledge.lower()
-
-            for word in text.split()
-        ):
-
-            retrieved_context.append(
-                knowledge
-            )
-
-    if retrieved_context:
+    # No retrieval case
+    if len(retrieved_claims) == 0:
 
         return {
 
-            "agent": "RAG Agent",
+            "agent":
+            "RAG Agent",
 
             "retrieved_context":
-                retrieved_context,
+            [],
 
             "rag_analysis":
-                "Relevant contextual knowledge retrieved",
-
-            "score": 0.85
-        }
-
-    return {
-
-        "agent": "RAG Agent",
-
-        "retrieved_context": [],
-
-        "rag_analysis":
             "No contextual knowledge retrieved",
 
-        "score": 0.5
-    }
+            "score":
+            0.5
+        }
+
+    # Input embedding
+    input_embedding = embedding_model.encode(
+
+        text,
+
+        convert_to_tensor=True
+    )
+
+    best_similarity = 0
+
+    best_context = None
+
+    # Find strongest context
+    for context in retrieved_claims:
+
+        context_embedding = embedding_model.encode(
+
+            context,
+
+            convert_to_tensor=True
+        )
+
+        similarity = util.cos_sim(
+
+            input_embedding,
+
+            context_embedding
+        ).item()
+
+        if similarity > best_similarity:
+
+            best_similarity = similarity
+
+            best_context = context
+
+    # =========================
+    # Decision Logic
+    # =========================
+
+    if best_similarity > 0.80:
+
+        return {
+
+            "agent":
+            "RAG Agent",
+
+            "retrieved_context":
+            retrieved_claims,
+
+            "best_context":
+            best_context,
+
+            "context_similarity":
+            round(best_similarity, 2),
+
+            "rag_analysis":
+            "Highly relevant contextual knowledge retrieved",
+
+            "score":
+            0.2
+        }
+
+    elif best_similarity > 0.60:
+
+        return {
+
+            "agent":
+            "RAG Agent",
+
+            "retrieved_context":
+            retrieved_claims,
+
+            "best_context":
+            best_context,
+
+            "context_similarity":
+            round(best_similarity, 2),
+
+            "rag_analysis":
+            "Moderately relevant contextual knowledge retrieved",
+
+            "score":
+            0.5
+        }
+
+    else:
+
+        return {
+
+            "agent":
+            "RAG Agent",
+
+            "retrieved_context":
+            retrieved_claims,
+
+            "best_context":
+            best_context,
+
+            "context_similarity":
+            round(best_similarity, 2),
+
+            "rag_analysis":
+            "Weak contextual similarity detected",
+
+            "score":
+            0.8
+        }

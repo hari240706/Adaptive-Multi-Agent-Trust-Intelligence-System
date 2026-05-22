@@ -99,3 +99,10 @@ dist/
 
 *.log
 *.sqlite3
+
+# Vector database
+vector_store/
+backend/vector_store/
+
+# Database
+*.db

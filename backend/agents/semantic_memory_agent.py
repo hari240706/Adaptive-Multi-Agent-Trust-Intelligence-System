@@ -1,118 +1,172 @@
-from sentence_transformers import SentenceTransformer
+from agents.vector_memory_agent import (
 
-from sklearn.metrics.pairwise import cosine_similarity
+    store_claim,
 
-import numpy as np
+    search_similar_claims
+)
+
+from sentence_transformers import (
+
+    SentenceTransformer,
+
+    util
+)
 
 
-# Load embedding model
-model = SentenceTransformer(
+# =========================
+# Load Embedding Model
+# =========================
+
+embedding_model = SentenceTransformer(
     "all-MiniLM-L6-v2"
 )
 
+# =========================
+# Known Suspicious Claims
+# =========================
 
-# Semantic memory database
-memory_claims = [
+known_fake_claims = [
 
     "aliens elected as world leaders",
 
-    "miracle cure removes all diseases",
+    "secret underground lizard society controls governments",
 
-    "secret underground lizard society controls elections",
+    "moon made of cheese",
 
-    "nasa launched a climate satellite",
-
-    "government announced infrastructure reforms"
+    "earth is flat and controlled by hidden elites"
 ]
 
 
-# Generate embeddings
-memory_embeddings = model.encode(
-    memory_claims
-)
+# Store suspicious claims
+for claim in known_fake_claims:
 
+    store_claim(claim)
+
+
+# =========================
+# Semantic Recall Agent
+# =========================
 
 def semantic_recall(text):
 
-    query_embedding = model.encode(
-        [text]
+    # Store incoming claim
+    store_claim(text)
+
+    # Search similar claims
+    similar_claims = search_similar_claims(
+        text
     )
 
-    similarities = cosine_similarity(
+    if len(similar_claims) == 0:
 
-        query_embedding,
+        return {
 
-        memory_embeddings
-    )[0]
+            "agent":
+            "Semantic Memory Agent",
 
-    best_match_index = np.argmax(
-        similarities
+            "matched_claim":
+            None,
+
+            "similarity":
+            0,
+
+            "semantic_analysis":
+            "No semantic memory match",
+
+            "score":
+            0.5
+        }
+
+    # Compute similarity
+    input_embedding = embedding_model.encode(
+        text,
+
+        convert_to_tensor=True
     )
 
-    best_score = similarities[
-        best_match_index
-    ]
+    best_match = None
 
-    matched_claim = memory_claims[
-        best_match_index
-    ]
+    best_similarity = 0
 
-    # Semantic interpretation
-    if best_score > 0.60:
+    for claim in similar_claims:
 
-        if "alien" in matched_claim \
-           or "miracle" in matched_claim \
-           or "lizard" in matched_claim:
+        claim_embedding = embedding_model.encode(
 
-            return {
+            claim,
 
-                "agent": "Semantic Memory Agent",
+            convert_to_tensor=True
+        )
 
-                "matched_claim": matched_claim,
+        similarity = util.cos_sim(
 
-                "similarity": round(
-                    float(best_score),
-                    2
-                ),
+            input_embedding,
 
-                "semantic_analysis":
-                    "Matched Suspicious Semantic Pattern",
+            claim_embedding
+        ).item()
 
-                "score": 0.2
-            }
+        if similarity > best_similarity:
 
-        else:
+            best_similarity = similarity
 
-            return {
+            best_match = claim
 
-                "agent": "Semantic Memory Agent",
+    # Decision logic
+    if best_similarity > 0.75:
 
-                "matched_claim": matched_claim,
+        return {
 
-                "similarity": round(
-                    float(best_score),
-                    2
-                ),
+            "agent":
+            "Semantic Memory Agent",
 
-                "semantic_analysis":
-                    "Matched Trusted Semantic Pattern",
+            "matched_claim":
+            best_match,
 
-                "score": 0.9
-            }
+            "similarity":
+            round(best_similarity, 2),
 
-    return {
+            "semantic_analysis":
+            "Strong suspicious semantic similarity detected",
 
-        "agent": "Semantic Memory Agent",
+            "score":
+            0.15
+        }
 
-        "matched_claim": None,
+    elif best_similarity > 0.55:
 
-        "similarity": round(
-            float(best_score),
-            2
-        ),
+        return {
 
-        "semantic_analysis":
-            "No Strong Semantic Match",
+            "agent":
+            "Semantic Memory Agent",
 
-        "score": 0.5
-    }
+            "matched_claim":
+            best_match,
+
+            "similarity":
+            round(best_similarity, 2),
+
+            "semantic_analysis":
+            "Moderate semantic similarity detected",
+
+            "score":
+            0.4
+        }
+
+    else:
+
+        return {
+
+            "agent":
+            "Semantic Memory Agent",
+
+            "matched_claim":
+            best_match,
+
+            "similarity":
+            round(best_similarity, 2),
+
+            "semantic_analysis":
+            "Weak semantic similarity detected",
+
+            "score":
+            0.75
+        }
