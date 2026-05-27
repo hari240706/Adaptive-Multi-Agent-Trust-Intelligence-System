@@ -1,4 +1,3 @@
-```markdown
 # AMATIS
 
 # Adaptive Multi-Agent Trust Intelligence System
@@ -172,11 +171,8 @@ This project is being engineered with a production-oriented AI systems engineeri
 - Live AI telemetry channels
 
 ---
-```
-````markdown
 # 🧠 Current System Architecture
 
-```text
 User Input
     ↓
 Frontend Observability Dashboard
@@ -264,7 +260,6 @@ Final Prediction + Trust Intelligence
     ↓
 
 Real-Time AI Dashboard + Telemetry
-```
 
 ---
 
@@ -555,11 +550,9 @@ AMATIS currently supports:
 - Evidence-aware trust analysis
 
 ---
-````
-````markdown
+
 # 📁 Current Project Structure
 
-```text
 Adaptive-Multi-Agent-Trust-Intelligence-System/
 │
 ├── backend/
@@ -624,7 +617,6 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 ├── README.md
 ├── .gitignore
 └── requirements.txt
-```
 
 ---
 
@@ -698,25 +690,19 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 
 ## Build Containers
 
-```bash
 docker-compose build
-```
 
 ---
 
 ## Run AMATIS
 
-```bash
 docker-compose up
-```
 
 ---
 
 ## Stop Containers
 
-```bash
 docker-compose down
-```
 
 ---
 
@@ -724,41 +710,31 @@ docker-compose down
 
 ## Main API
 
-```text
 http://localhost:8000
-```
 
 ---
 
 ## Swagger Documentation
 
-```text
 http://localhost:8000/docs
-```
 
 ---
 
 ## Analytics API
 
-```text
 http://localhost:8000/analytics
-```
 
 ---
 
 ## History API
 
-```text
 http://localhost:8000/history
-```
 
 ---
 
 ## WebSocket Endpoint
 
-```text
 ws://localhost:8000/ws
-```
 
 ---
 
@@ -851,4 +827,3 @@ This project is currently under active development.
 # 👨‍💻 Author
 
 HARIPRASAD R
-````
