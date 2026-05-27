@@ -1,3 +1,4 @@
+```gitignore
 # =========================
 # Virtual Environment
 # =========================
@@ -30,11 +31,18 @@ __pycache__/
 .vscode/
 
 # =========================
+# IDE Files
+# =========================
+
+.idea/
+
+# =========================
 # Environment Variables
 # =========================
 
 .env
 .env.*
+*.env
 
 # =========================
 # Raw Datasets
@@ -43,7 +51,7 @@ __pycache__/
 data/raw/
 
 # =========================
-# Processed Temporary Files
+# Temporary Data
 # =========================
 
 data/temp/
@@ -78,21 +86,35 @@ models/distilbert_model/
 vector_store/
 backend/vector_store/
 
+# FAISS artifacts
+*.faiss
+*.index
+*.pkl
+
 # =========================
 # Database Files
 # =========================
 
 *.db
 *.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite-journal
 
 # =========================
 # Docker
 # =========================
 
 docker-compose.override.yml
-
-# Docker cache / volumes
 docker-data/
+.docker/
+
+# =========================
+# Runtime Files
+# =========================
+
+*.log
+*.pid
 
 # =========================
 # OS Files
@@ -101,6 +123,9 @@ docker-data/
 .DS_Store
 Thumbs.db
 desktop.ini
+ehthumbs.db
+.AppleDouble
+.LSOverride
 
 # =========================
 # Pytest
@@ -123,48 +148,26 @@ dist/
 *.egg-info/
 
 # =========================
-# Runtime Files
+# Coverage Reports
 # =========================
 
-*.log
+htmlcov/
+.coverage
+coverage.xml
 
 # =========================
 # Node Modules
 # =========================
 
 node_modules/
+package-lock.json
+yarn.lock
 
 # =========================
-# IDE Files
-# =========================
-
-.idea/
-
-# =========================
-# Streamlit Cache
+# Streamlit
 # =========================
 
 .streamlit/
-
-# =========================
-# Coverage Reports
-# =========================
-
-htmlcov/
-.coverage
-
-# =========================
-# Mac Metadata
-# =========================
-
-.AppleDouble
-.LSOverride
-
-# =========================
-# Windows Metadata
-# =========================
-
-ehthumbs.db
 
 # =========================
 # Backup Files
@@ -173,3 +176,13 @@ ehthumbs.db
 *.bak
 *.tmp
 *.swp
+*.old
+
+# =========================
+# Generated Analytics
+# =========================
+
+telemetry/
+history/
+analytics/
+```

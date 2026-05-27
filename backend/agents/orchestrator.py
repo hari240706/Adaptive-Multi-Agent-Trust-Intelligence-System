@@ -22,6 +22,8 @@ from agents.trust_graph_agent import generate_trust_graph
 
 from agents.live_search_agent import live_search_analysis
 
+from agents.real_time_search_agent import search_realtime_sources
+
 from agents.planner_agent import create_execution_plan
 
 from agents.debate_agent import run_debate
@@ -64,6 +66,8 @@ def run_agents(text):
     semantic_result = semantic_recall(text)
 
     live_search_result = live_search_analysis(text)
+
+    realtime_result = search_realtime_sources(text)
 
     source_reputation_result = analyze_source_reputation(text)
 
@@ -134,62 +138,64 @@ def run_agents(text):
 
     weights = {
 
-        "nlp_weight": 0.10,
+        "nlp_weight":0.08,
 
-        "credibility_weight": 0.07,
+        "credibility_weight":0.06,
 
-        "fact_weight": 0.10,
+        "fact_weight":0.10,
 
-        "graph_weight": 0.10,
+        "graph_weight":0.10,
 
-        "web_weight": 0.08,
+        "web_weight":0.08,
 
-        "evidence_weight": 0.10,
+        "evidence_weight":0.08,
 
-        "semantic_weight": 0.10,
+        "semantic_weight":0.08,
 
-        "live_search_weight": 0.07,
+        "live_search_weight":0.07,
 
-        "reputation_weight": 0.07,
+        "realtime_weight":0.08,
 
-        "behavioral_weight": 0.07,
+        "reputation_weight":0.07,
 
-        "temporal_weight": 0.07,
+        "behavioral_weight":0.06,
 
-        "rag_weight": 0.07
+        "temporal_weight":0.06,
+
+        "rag_weight":0.08
     }
 
     # =========================
     # Adaptive Weighting
     # =========================
 
-    if fact_result.get("score", 0) < 0.5:
+    if fact_result.get("score",0) < 0.5:
 
         weights["fact_weight"] += 0.05
 
-    if graph_result.get("score", 0) < 0.5:
+    if graph_result.get("score",0) < 0.5:
 
         weights["graph_weight"] += 0.05
 
-    if evidence_result.get("score", 0) < 0.5:
+    if evidence_result.get("score",0) < 0.5:
 
         weights["evidence_weight"] += 0.05
 
-    if semantic_result.get("score", 0) < 0.5:
+    if semantic_result.get("score",0) < 0.5:
 
         weights["semantic_weight"] += 0.05
 
-    if web_result.get("score", 0) > 0.8:
+    if web_result.get("score",0) > 0.8:
 
         weights["web_weight"] += 0.05
 
-    if source_reputation_result.get("score", 0) > 0.8:
+    if realtime_result.get("score",0) > 0.8:
+
+        weights["realtime_weight"] += 0.05
+
+    if source_reputation_result.get("score",0) > 0.8:
 
         weights["reputation_weight"] += 0.05
-
-    if behavioral_result.get("score", 0) < 0.5:
-
-        weights["behavioral_weight"] += 0.05
 
     # =========================
     # Normalize Weights
@@ -203,6 +209,7 @@ def run_agents(text):
 
         weights[key] /= total_weight
 
+
     # =========================
     # Final Trust Score
     # =========================
@@ -210,63 +217,55 @@ def run_agents(text):
     final_score = (
 
         nlp_result.get(
-            "confidence",
-            0
+            "confidence",0
         ) * weights["nlp_weight"]
 
         + credibility_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["credibility_weight"]
 
         + fact_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["fact_weight"]
 
         + graph_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["graph_weight"]
 
         + web_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["web_weight"]
 
         + evidence_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["evidence_weight"]
 
         + semantic_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["semantic_weight"]
 
         + live_search_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["live_search_weight"]
 
+        + realtime_result.get(
+            "score",0
+        ) * weights["realtime_weight"]
+
         + source_reputation_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["reputation_weight"]
 
         + behavioral_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["behavioral_weight"]
 
         + temporal_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["temporal_weight"]
 
         + rag_result.get(
-            "score",
-            0
+            "score",0
         ) * weights["rag_weight"]
     )
 
@@ -282,8 +281,9 @@ def run_agents(text):
 
         final_prediction = "Likely Fake"
 
+
     # =========================
-    # Save Analysis to Database
+    # Save Analysis
     # =========================
 
     save_analysis(
@@ -292,8 +292,9 @@ def run_agents(text):
 
         final_prediction,
 
-        round(final_score, 2)
+        round(final_score,2)
     )
+
 
     # =========================
     # Explanation Agent
@@ -312,6 +313,7 @@ def run_agents(text):
         web_result
     )
 
+
     # =========================
     # Memory Agent
     # =========================
@@ -323,27 +325,32 @@ def run_agents(text):
         final_prediction
     )
 
+
     # =========================
     # Final Response
     # =========================
 
     return {
 
-        "final_prediction": final_prediction,
+        "final_prediction":
 
-        "trust_score": round(
+        final_prediction,
+
+        "trust_score":
+
+        round(
             final_score,
             2
         ),
 
-        "agent_weights": {
+        "agent_weights":{
 
-            key: round(value, 2)
+            key:round(value,2)
 
-            for key, value in weights.items()
+            for key,value in weights.items()
         },
 
-        "agents": [
+        "agents":[
 
             planner_result,
 
@@ -362,6 +369,8 @@ def run_agents(text):
             semantic_result,
 
             live_search_result,
+
+            realtime_result,
 
             source_reputation_result,
 

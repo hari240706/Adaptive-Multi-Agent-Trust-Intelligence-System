@@ -1,3 +1,4 @@
+```markdown
 # AMATIS
 
 # Adaptive Multi-Agent Trust Intelligence System
@@ -24,8 +25,10 @@ AMATIS aims to evolve into a next-generation AI trust intelligence ecosystem cap
 - Performing vector-based retrieval intelligence
 - Streaming real-time AI telemetry
 - Scaling as distributed AI infrastructure
+- Supporting evidence-driven intelligence systems
+- Integrating live search and trust-aware retrieval
 
-This project is being engineered with a production-oriented and MAANG-level AI systems engineering mindset.
+This project is being engineered with a production-oriented AI systems engineering mindset.
 
 ---
 
@@ -96,7 +99,6 @@ This project is being engineered with a production-oriented and MAANG-level AI s
 - Adaptive trust scoring system
 - Cooperative agent reasoning
 - Dynamic agent weighting
-- Multi-agent dashboard integration
 - Explainable trust reasoning
 - Agent memory integration
 - Trust graph generation
@@ -114,9 +116,7 @@ This project is being engineered with a production-oriented and MAANG-level AI s
 - Dockerized backend infrastructure
 - Containerized FastAPI deployment
 - Production-ready project structure
-- Modular backend package architecture
 - Docker Compose integration
-- Production dependency optimization
 - Containerized transformer inference system
 
 ---
@@ -130,7 +130,6 @@ This project is being engineered with a production-oriented and MAANG-level AI s
 - Vector embedding retrieval
 - Long-term claim memory
 - Similarity search workflows
-- Vector intelligence infrastructure
 - Sentence-transformer embedding pipelines
 
 ---
@@ -144,7 +143,6 @@ This project is being engineered with a production-oriented and MAANG-level AI s
 - Analysis history retrieval
 - Persistent trust analytics
 - AI observability APIs
-- System analytics infrastructure
 - Historical intelligence workflows
 
 ---
@@ -158,7 +156,6 @@ This project is being engineered with a production-oriented and MAANG-level AI s
 - Interactive trust graphs
 - Agent telemetry visualization
 - Trust score trend charts
-- Enterprise dashboard UI
 - Multi-agent observability system
 
 ---
@@ -175,40 +172,8 @@ This project is being engineered with a production-oriented and MAANG-level AI s
 - Live AI telemetry channels
 
 ---
-
-# 📂 Datasets Used
-
-## 1. FakeNewsNet
-
-Used:
-
-- BuzzFeed fake news dataset
-- BuzzFeed real news dataset
-- PolitiFact fake news dataset
-- PolitiFact real news dataset
-
----
-
-## 2. LIAR Dataset
-
-Used:
-
-- train.tsv
-- test.tsv
-- valid.tsv
-
----
-
-## 3. Additional Fake News Dataset
-
-Used:
-
-- train.csv
-- test.csv
-- evaluation.csv
-
----
-
+```
+````markdown
 # 🧠 Current System Architecture
 
 ```text
@@ -220,48 +185,85 @@ FastAPI Backend
     ↓
 Adaptive Orchestrator Agent
     ↓
- ┌─────────────────────────────────────────────┐
- │        Multi-Agent Intelligence Layer       │
- └─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│        Multi-Agent Intelligence Layer       │
+└─────────────────────────────────────────────┘
+
     ↓
- ┌──────────────┬──────────────┬──────────────┐
- │              │              │
- ↓              ↓              ↓
+
+┌──────────────┬──────────────┬──────────────┐
+│              │              │
+↓              ↓              ↓
+
 NLP Agent   Credibility   Fact Check Agent
              Agent
- │              │              │
- └──────────────┴──────────────┘
+
+│              │              │
+
+└──────────────┴──────────────┘
+
                 ↓
- ┌─────────────────────────────────────────────┐
- │       Advanced Intelligence Agents          │
- └─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│          Advanced Intelligence Layer        │
+└─────────────────────────────────────────────┘
+
     ↓
+
 Knowledge Graph Agent
+
 Web Verification Agent
+
 Evidence Retrieval Agent
+
 Semantic Memory Agent
-Behavioral Analysis Agent
-Temporal Analysis Agent
+
 Live Search Agent
+
+Real-Time Search Agent
+
 Source Reputation Agent
+
+Behavioral Analysis Agent
+
+Temporal Analysis Agent
+
 RAG Agent
+
 Debate Agent
+
 Reasoning Agent
-Trust Graph Agent
-Explanation Agent
+
 Planner Agent
+
+Explanation Agent
+
+Trust Graph Agent
+
 Memory Agent
+
 Analytics Agent
+
 Vector Memory Agent
+
 Database Agent
+
     ↓
+
 Adaptive Trust Scoring Engine
+
     ↓
+
 Persistent Intelligence Layer
+
     ↓
+
 Final Prediction + Trust Intelligence
+
     ↓
-Real-Time Observability Dashboard
+
+Real-Time AI Dashboard + Telemetry
 ```
 
 ---
@@ -298,8 +300,8 @@ Responsibilities:
 
 - Suspicious claim detection
 - Rule-based verification
-- Anomaly identification
 - Fake-pattern recognition
+- Claim anomaly identification
 
 ---
 
@@ -309,8 +311,8 @@ Responsibilities:
 
 - Entity relationship analysis
 - Suspicious relationship detection
-- Graph-based reasoning
 - Contextual entity intelligence
+- Graph-based reasoning
 
 ---
 
@@ -329,9 +331,9 @@ Responsibilities:
 
 Responsibilities:
 
-- Evidence retrieval workflows
 - Supporting-context discovery
 - Information matching
+- Evidence retrieval workflows
 - Trust evidence generation
 
 ---
@@ -343,7 +345,7 @@ Responsibilities:
 - Semantic similarity matching
 - Suspicious pattern recall
 - Historical claim comparison
-- Transformer embedding retrieval
+- Embedding retrieval
 
 ---
 
@@ -351,10 +353,21 @@ Responsibilities:
 
 Responsibilities:
 
-- Real-time reference search
 - Trusted-source lookup
+- Live reference analysis
 - External source discovery
-- Live information retrieval
+- Search-based trust signals
+
+---
+
+## Real-Time Search Agent
+
+Responsibilities:
+
+- Real-time trusted source detection
+- Evidence-aware source extraction
+- Dynamic trust indicators
+- Retrieval signal generation
 
 ---
 
@@ -364,8 +377,8 @@ Responsibilities:
 
 - Domain reputation analysis
 - Reputation score generation
-- Trust-source ranking
 - Credibility aggregation
+- Trust-source ranking
 
 ---
 
@@ -375,7 +388,7 @@ Responsibilities:
 
 - Manipulative language detection
 - Emotional-pattern analysis
-- Propaganda-style identification
+- Propaganda identification
 - Behavioral anomaly detection
 
 ---
@@ -386,8 +399,8 @@ Responsibilities:
 
 - Timeline consistency verification
 - Temporal anomaly detection
-- Chronological reasoning
-- Event consistency analysis
+- Event chronology reasoning
+- Consistency analysis
 
 ---
 
@@ -410,8 +423,8 @@ Responsibilities:
 
 - Multi-agent argument simulation
 - Contradiction analysis
-- Cooperative reasoning workflows
 - Evidence conflict evaluation
+- Cooperative reasoning workflows
 
 ---
 
@@ -421,8 +434,8 @@ Responsibilities:
 
 - Multi-step trust reasoning
 - Logical decision synthesis
-- Agent output interpretation
-- Final reasoning workflows
+- Agent interpretation
+- Final reasoning generation
 
 ---
 
@@ -430,10 +443,10 @@ Responsibilities:
 
 Responsibilities:
 
+- Human-readable explanations
 - Explainable AI generation
-- Human-readable reasoning outputs
-- Transparent decision explanation
 - Trust interpretation reporting
+- Transparent reasoning
 
 ---
 
@@ -443,8 +456,8 @@ Responsibilities:
 
 - Dynamic execution planning
 - Agent workflow coordination
-- Task orchestration
 - Adaptive execution sequencing
+- Task orchestration
 
 ---
 
@@ -454,8 +467,8 @@ Responsibilities:
 
 - Analysis memory persistence
 - Prediction history tracking
-- Context retention
 - Agent-state continuity
+- Context retention
 
 ---
 
@@ -466,9 +479,9 @@ Responsibilities:
 Responsibilities:
 
 - Trust relationship visualization
-- Graph generation
 - Agent connection mapping
 - Trust network analysis
+- Graph generation
 
 ---
 
@@ -477,9 +490,8 @@ Responsibilities:
 Responsibilities:
 
 - FAISS vector storage
-- Semantic vector retrieval
+- Semantic retrieval
 - Long-term claim memory
-- Embedding similarity search
 - Persistent semantic intelligence
 
 ---
@@ -488,8 +500,8 @@ Responsibilities:
 
 Responsibilities:
 
-- Persistent analysis storage
 - Historical intelligence tracking
+- Persistent storage
 - Analytics persistence
 - Trust history management
 
@@ -501,8 +513,8 @@ Responsibilities:
 
 - System observability
 - Historical analytics generation
-- AI telemetry reporting
 - Dashboard intelligence aggregation
+- AI telemetry reporting
 
 ---
 
@@ -514,7 +526,6 @@ Responsibilities:
 - Dynamic trust scoring
 - Adaptive agent weighting
 - Final prediction synthesis
-- System-wide orchestration
 
 ---
 
@@ -534,67 +545,36 @@ AMATIS currently supports:
 - Retrieval-Augmented Generation (RAG)
 - Trust graph visualization
 - Evidence retrieval workflows
-- Real-time frontend inference
 - Interactive AI dashboard
-- Adaptive orchestration pipelines
 - Persistent memory storage
 - Historical analysis tracking
 - AI observability APIs
 - Real-time telemetry streaming
 - WebSocket communication infrastructure
+- Real-time source intelligence
+- Evidence-aware trust analysis
 
 ---
-
-# 📊 Current Model Performance
-
-## Baseline Logistic Regression Model
-
-| Metric | Score |
-|--------|------|
-| Accuracy | 87.2% |
-| F1-Score | 87% |
-
----
-
-## DistilBERT Transformer Model
-
-| Metric | Score |
-|--------|------|
-| Accuracy | 89.6% |
-| F1-Score | 89.7% |
-
----
-
-# 🧹 Data Cleaning Operations
-
-The preprocessing pipeline performs:
-
-- Null value removal
-- Duplicate removal
-- URL cleaning
-- Lowercase normalization
-- Special character removal
-- Whitespace normalization
-- Label standardization
-- Dataset shuffling
-
----
-
+````
+````markdown
 # 📁 Current Project Structure
 
 ```text
 Adaptive-Multi-Agent-Trust-Intelligence-System/
 │
 ├── backend/
+│   │
 │   ├── main.py
 │   ├── Dockerfile
 │   ├── requirements.txt
 │   │
 │   ├── agents/
+│   │   │
 │   │   ├── orchestrator.py
 │   │   ├── analytics_agent.py
 │   │   ├── database_agent.py
 │   │   ├── vector_memory_agent.py
+│   │   ├── real_time_search_agent.py
 │   │   ├── nlp_agent.py
 │   │   ├── credibility_agent.py
 │   │   ├── fact_check_agent.py
@@ -602,12 +582,17 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 │   │   ├── web_verification_agent.py
 │   │   ├── evidence_retrieval_agent.py
 │   │   ├── semantic_memory_agent.py
+│   │   ├── live_search_agent.py
+│   │   ├── source_reputation_agent.py
+│   │   ├── behavioral_analysis_agent.py
+│   │   ├── temporal_analysis_agent.py
 │   │   ├── reasoning_agent.py
 │   │   ├── trust_graph_agent.py
 │   │   ├── debate_agent.py
 │   │   ├── planner_agent.py
 │   │   ├── rag_agent.py
-│   │   └── ...
+│   │   ├── explanation_agent.py
+│   │   └── memory_agent.py
 │   │
 │   ├── models/
 │   │   └── distilbert_model/
@@ -619,22 +604,25 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 │   └── __init__.py
 │
 ├── frontend/
+│   │
 │   ├── index.html
 │   ├── style.css
 │   └── script.js
 │
 ├── data/
+│   │
 │   ├── raw/
 │   └── processed/
 │
 ├── notebooks/
+│   │
 │   ├── 01_data_cleaning.ipynb
 │   ├── 02_baseline_model.ipynb
 │   └── 03_distilbert_training.ipynb
 │
 ├── docker-compose.yml
-├── .gitignore
 ├── README.md
+├── .gitignore
 └── requirements.txt
 ```
 
@@ -650,14 +638,15 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 
 # Machine Learning & NLP
 
-- transformers
-- torch
+- Transformers
+- DistilBERT
 - Hugging Face
-- scikit-learn
-- sentence-transformers
-- pandas
-- numpy
+- Scikit-Learn
+- Sentence Transformers
+- Pandas
+- NumPy
 - FAISS
+- Torch
 
 ---
 
@@ -680,6 +669,14 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 
 ---
 
+# Database & Intelligence Layer
+
+- SQLite
+- FAISS Vector Database
+- Persistent Semantic Memory
+
+---
+
 # Infrastructure & Deployment
 
 - Docker
@@ -687,26 +684,19 @@ Adaptive-Multi-Agent-Trust-Intelligence-System/
 
 ---
 
-# Database & Memory
-
-- SQLite
-- FAISS Vector Database
-
----
-
 # Development Tools
 
 - Git
 - GitHub
+- VS Code
 - Jupyter Notebook
 - Google Colab
-- VS Code
 
 ---
 
-# 🐳 Dockerized Deployment
+# 🐳 Docker Deployment
 
-# Build Docker Containers
+## Build Containers
 
 ```bash
 docker-compose build
@@ -714,7 +704,7 @@ docker-compose build
 
 ---
 
-# Run AMATIS
+## Run AMATIS
 
 ```bash
 docker-compose up
@@ -722,7 +712,7 @@ docker-compose up
 
 ---
 
-# Stop Containers
+## Stop Containers
 
 ```bash
 docker-compose down
@@ -730,7 +720,7 @@ docker-compose down
 
 ---
 
-# 🌐 Backend APIs
+# 🌐 API Endpoints
 
 ## Main API
 
@@ -772,68 +762,63 @@ ws://localhost:8000/ws
 
 ---
 
-# 🚀 Current Dashboard Features
+# 🚀 Dashboard Features
 
-The AMATIS frontend dashboard currently supports:
+AMATIS currently supports:
 
 - Real-time AI trust analysis
 - Multi-agent visualization
 - Trust score generation
-- Interactive agent outputs
 - Adaptive agent weighting
-- Trust graph visualization
+- Interactive trust graph
 - Explainable reasoning outputs
-- Enterprise-style AI interface
 - Historical trust analytics
+- AI observability dashboard
 - Real-time telemetry updates
 - Live WebSocket streaming
-- Observability dashboard
-- Trust score trend visualization
+- Agent intelligence visualization
 
 ---
 
-# 🚀 Upcoming Development Phases
+# 🚀 Upcoming Development Roadmap
 
-# Planned Future Systems
+## Planned Future Systems
 
 - PostgreSQL persistent intelligence layer
 - Redis orchestration caching
-- Advanced live web search APIs
 - Cloud-native deployment infrastructure
 - Kubernetes orchestration
+- Advanced web search APIs
 - Distributed agent communication
 - Autonomous adaptive meta-agents
 - Multi-modal intelligence pipelines
 - Federated trust intelligence systems
-- Real-time distributed AI orchestration
+- Distributed AI orchestration
 
 ---
 
-# 🧠 Long-Term System Vision
+# 🧠 Long-Term Vision
 
-The final AMATIS ecosystem aims to evolve into a:
+AMATIS aims to evolve into:
 
 - Real-time misinformation intelligence platform
 - Distributed AI trust ecosystem
 - Adaptive multi-agent reasoning engine
-- Cloud-native AI infrastructure
-- Enterprise trust intelligence platform
-- Autonomous cooperative AI system
-- Real-time AI observability infrastructure
+- Enterprise AI infrastructure
+- Autonomous cooperative AI platform
 - Distributed trust intelligence network
 
 ---
 
 # 🎯 Core Objectives
 
-- Build an explainable misinformation detection platform
+- Build explainable misinformation detection systems
 - Engineer scalable AI trust infrastructure
-- Combine NLP, graph intelligence, and reasoning systems
-- Create production-grade AI orchestration pipelines
-- Research advanced cooperative AI systems
-- Develop MAANG-level AI engineering architecture
-- Build enterprise AI observability systems
-- Engineer persistent semantic intelligence infrastructure
+- Combine NLP, graph intelligence and reasoning systems
+- Create production-grade orchestration pipelines
+- Research cooperative AI systems
+- Build enterprise observability platforms
+- Engineer persistent semantic intelligence
 
 ---
 
@@ -841,32 +826,19 @@ The final AMATIS ecosystem aims to evolve into a:
 
 ✅ Enterprise Multi-Agent Trust Intelligence Platform Completed
 
-# Current Capabilities
+Current capabilities:
 
-- End-to-end full-stack AI workflow
-- Transformer inference infrastructure
+- End-to-end AI workflow
 - Multi-agent orchestration engine
 - Adaptive trust scoring
 - Persistent vector intelligence
 - FAISS semantic memory
-- Real-time analytics dashboard
 - Trust graph visualization
-- Explainable reasoning pipeline
-- Dockerized production deployment
+- Real-time analytics dashboard
+- Dockerized deployment
 - Enterprise AI observability
-- Real-time telemetry streaming
 - Historical intelligence tracking
-
----
-
-# 🚀 Next Milestone
-
-- PostgreSQL persistent intelligence
-- Advanced retrieval pipelines
-- Cloud-native deployment
-- Distributed AI orchestration
-- Autonomous meta-agent systems
-- Real-time distributed AI telemetry
+- Live telemetry streaming
 
 ---
 
@@ -879,3 +851,4 @@ This project is currently under active development.
 # 👨‍💻 Author
 
 HARIPRASAD R
+````
